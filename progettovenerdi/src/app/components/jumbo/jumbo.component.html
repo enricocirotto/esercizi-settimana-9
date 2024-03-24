@@ -1,0 +1,16 @@
+<div class="p-4 shadow-4 rounded-3 m-5" style="background-color: #2b3035;">
+    <h2>Il tuo Salone di Auto di Lusso</h2>
+    <p>
+      Lo staff di Grissicar le metterà a disposizione i migliori veicoli della zona, di seguito una selezione dei nostri brand.
+    </p>
+  
+    <hr class="my-4" />
+
+  <div class="my-3 ">
+    <div class="row justify-content-center">
+    <div *ngFor="let brandImage of brandImages" class="col-md-3 d-flex align-items-center justify-content-center">
+      <img [src]="brandImage.logo" alt="{{ brandImage.brand }}" class="img-fluid" width="100">
+    </div>
+  </div>
+    </div>
+

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="p-4 shadow-4 rounded-3 m-5" style="background-color: #2b3035">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h2>Audi in evidenza</h2>
+        <p>Una selezione delle nostre auto</p>
+      </div>
+
+      <img [src]="logo.brandLogo" width="150px" alt="" />
+    </div>
+
+    <hr class="my-4" />
+
+    <div class="m-4 row" *ngIf="isLoaded">
+      <div
+        *ngFor="let car of related"
+        class="card d-inline mx-2"
+        style="width: 18rem"
+      >
+        <img
+          class="card-img-top my-3 rounded-1"
+          [src]="car.modelImage"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.brand + " " + car.model }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">prezzo: {{ car.price + "€" }}</li>
+          <li class="list-group-item">anno: {{ car.year }}</li>
+          <li class="list-group-item">
+            <p
+              class="mb-auto"
+              [ngClass]="car.available ? 'text-info' : 'text-warning'"
+            >
+              <span *ngIf="car.available; else notAvailable"
+                >pronta consegna <i class="bi bi-check-circle-fill ms-2"></i
+              ></span>
+              <ng-template #notAvailable
+                >non disponibile<i class="bi bi-x-circle-fill ms-2"></i
+              ></ng-template>
+            </p>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a
+            [routerLink]="['/error404']"
+            routerLinkActive="router-link-active"
+            class="card-link text-decoration-none text-white"
+            >dettagli</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
